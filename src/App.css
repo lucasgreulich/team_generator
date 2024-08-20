@@ -20,6 +20,7 @@
   font-weight: bold;
   background-color: lightblue;
   display: flex;
+  text-align: center;
   width: 5rem;
 }
 .team_generator_container{
@@ -33,4 +34,14 @@
   margin-top: 1rem;
   margin-right: 25%;
   float: right;
+}
+.form_one{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+}
+.list{
+  list-style-type: none;
+  font-weight: bold;
 }
