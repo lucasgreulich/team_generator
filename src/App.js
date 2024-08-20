@@ -1,18 +1,39 @@
 import './App.css';
+import React, {Component} from 'react';
+import { useState } from 'react';
 
 
-function App() {
+export default function App() {
+  const [name, setName] = useState("");
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    alert(`The name you entered was: ${name}`)
+  };
+
+
   return (
     <>
-      <div className="list_container">
-        <div className="list_box">
-          <ul className="names_list">Lucas</ul>
-          <ul className="names_list">Adam</ul>
-        </div>
-        <button className="randomization_button">Click</button>
+      <div className="names_box">
+        <form onSubmit={handleSubmit}>
+          <h1>Add names</h1>
+          <label htmlFor='title'>Enter Names: 
+          <input 
+          type='text' 
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          />
+          </label>
+          
+          <button className="button" type='submit'>Add</button>
+        </form>
+      </div>
+
+      <div className="team_generator_container">
+        <button className="button">Generate</button>
       </div>
     </>
   );
 }
 
-export default App;
+

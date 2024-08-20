@@ -1,22 +1,36 @@
-.list_container{
+.App{
   display: flex;
+  align-items: center;
+  background-color: black;
+}
+.names_box{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  flex-direction: column;
-  align-items: center;
   margin-top: 10rem;
-}
-.list_box{
+  background-color: aqua;
   height: 25rem;
-  width: 25rem;
-  background-color: lightcoral;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 50%;
+  margin-right: 25%;
+  float: right;
 }
-.randomization_button{
+.button{
   color: black;
   font-weight: bold;
   background-color: lightblue;
   display: flex;
-  width: 3rem;
+  width: 5rem;
+}
+.team_generator_container{
+  background-color: aquamarine;
+  height: 10rem;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 1rem;
+  margin-right: 25%;
+  float: right;
 }
