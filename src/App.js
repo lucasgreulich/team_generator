@@ -59,7 +59,7 @@ export default function App() {
     }
     //if odd one out add to last line 
     if(shuffledNames.length === 1){
-      newTeams.push([shuffledNames[0]]);
+      newTeams[newTeams.length - 1].push(shuffledNames[0]);
     }
 
     setTeams(newTeams);
@@ -102,7 +102,7 @@ export default function App() {
       
         <button 
         onClick={handleRandomizeTeams}
-        //disabled={setSelectedNames.length < 2}
+        disabled={selectedNames.length < 2}
         >
         Generate</button>
 
