@@ -9,6 +9,7 @@ export default function App() {
   const [list, setList] = useState([]);
   const [selectedNames, setSelectedNames] = useState([]);
   const [teams, setTeams] = useState([]);
+  const [teamSize, setTeamSize] = useState(2);
   
 
   //handling change 
@@ -41,7 +42,11 @@ export default function App() {
       setSelectedNames([...selectedNames, name]);
     }
   };
-  
+  //handle team size change
+  function handleTeamSizeChange (e) {
+    setTeamSize(Number(e.target.value));
+  };
+
   //radomizing the teams 
   function handleRandomizeTeams() {
     const shuffledNames = [...selectedNames].sort(() => Math.random() - 0.5);
@@ -55,7 +60,7 @@ export default function App() {
   // Ensure selectedNames is an array
 
     while (shuffledNames.length >= 2){
-      newTeams.push([shuffledNames.pop(), shuffledNames.pop()]);
+      newTeams.push(shuffledNames.splice(0, teamSize));
     }
     //if odd one out add to last line 
     if(shuffledNames.length === 1){
@@ -98,11 +103,26 @@ export default function App() {
             </li>
           ))}
         </ul>
-
+        <div style={{marginTop: '20px' }}>
+          <label>
+            Team Size: 
+            <select 
+              value={teamSize}
+              onChange={handleTeamSizeChange}
+              style={{ marginLeft: "10px"}}
+            >
+              {[...Array(10)].map((_, i) => (
+                <option key={i + 1} value={i + 1}>
+                  {i + 1} player{i > 0 && 's'}
+                </option>
+              ))}
+              </select>
+          </label>
+        </div>
       
         <button 
         onClick={handleRandomizeTeams}
-        disabled={selectedNames.length < 2}
+        disabled={selectedNames.length < teamSize || teamSize < 1}
         >
         Generate</button>
 
