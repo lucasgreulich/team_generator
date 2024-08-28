@@ -1,6 +1,6 @@
 import './App.css';
-import React, {Component} from 'react';
-import { useState } from 'react';
+import React, {useState} from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 export default function App() {
@@ -75,20 +75,22 @@ export default function App() {
 
   return (
     <>
-      <div className="names_box">
+      <div className="container mt-5">
         <form className='form_one' onSubmit={handleSubmit}>
           <h1>Add names</h1> 
+          <div className='input-group mb-3'>
           <input 
           type='text' 
           value={name}
           onChange={handleInputChange}
           placeholder='Enter Name'
           />
-          <button className="button" type='submit'>Add</button>
-          <button className='button' onClick={handleClear}>Clear</button>
+          <button className="btn btn-primary" type='submit'>Add</button>
+          <button className='btn btn-danger' onClick={handleClear}>Clear</button>
+          </div>
         </form>
 
-        <ul className='list'>
+        <ul className='list-group mb-3'>
           {list.map((name, index) => (
             <li 
             key={index}
@@ -103,7 +105,7 @@ export default function App() {
             </li>
           ))}
         </ul>
-        <div style={{marginTop: '20px' }}>
+        <div className='mb-3'>
           <label>
             Team Size: 
             <select 
@@ -121,17 +123,18 @@ export default function App() {
         </div>
       
         <button 
+        className='btn btn-success'
         onClick={handleRandomizeTeams}
         disabled={selectedNames.length < teamSize || teamSize < 1}
         >
         Generate</button>
 
         {teams.length > 0 && (
-          <div style={{ marginTop: '20px' }}>
+          <div className='mt-4'>
             <h3>Teams</h3>
-            <ul>
+            <ul className='list-group'>
               {teams.map((team, index) => (
-                <li key={index}>
+                <li key={index} className='list-group-item'>
                   Team {index + 1}: {team.join(' & ')}
                 </li>
               ))}
